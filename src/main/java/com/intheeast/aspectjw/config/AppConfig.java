@@ -9,13 +9,12 @@ import org.springframework.instrument.classloading.ReflectiveLoadTimeWeaver;
 
 @Configuration
 @EnableSpringConfigured
-//@EnableAspectJAutoProxy(proxyTargetClass = true)
 @EnableLoadTimeWeaving(aspectjWeaving = EnableLoadTimeWeaving.AspectJWeaving.ENABLED)
 @ComponentScan(basePackages = "com.intheeast.aspectjw")
-public class AppConfig  /*implements LoadTimeWeavingConfigurer*/ {
+public class AppConfig  implements LoadTimeWeavingConfigurer {
 
-//    @Override
-//    public LoadTimeWeaver getLoadTimeWeaver() {
-//        return new InstrumentationLoadTimeWeaver();
-//    }
+    @Override
+    public LoadTimeWeaver getLoadTimeWeaver() {
+        return new InstrumentationLoadTimeWeaver();
+    }
 }
